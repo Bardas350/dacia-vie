@@ -1,19 +1,22 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Link } from "react-router-dom";
+import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, Compass, MapPin, Mountain, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { topics } from "@/data/topics";
+import TopicCard from "@/components/TopicCard";
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
-
-const Index = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">
-          Start building your amazing project here!
-        </p>
+export default function Index() {
+  return <>
+    <section className="relative min-h-[590px] overflow-hidden bg-[hsl(var(--forest))] sm:min-h-[650px]">
+      <img src="/assets/dacia-fortress.png" alt="Reconstituire artistică a unei cetăți dacice în munții Carpați" className="hero-image absolute inset-0 h-full w-full object-cover object-[60%_center]" fetchPriority="high" />
+      <div className="absolute inset-0 bg-[hsl(var(--forest))]/20" />
+      <div className="container-wide relative py-20 text-[#fff8e9] sm:py-24 lg:py-28">
+        <div className="hero-copy enter max-w-[630px]"><p className="eyebrow flex items-center gap-3 text-[#f1d2a5]"><span className="h-px w-8 bg-[#e6c497]" /> O expediție în trecutul nostru</p><h1 className="mt-6 text-[67px] font-medium leading-[.95] tracking-tight sm:text-[92px] lg:text-[106px]">Dacii.<br /><span className="italic text-[#ecd3ac]">O lume vie.</span></h1><p className="mt-7 max-w-[400px] text-[13px] leading-[1.9] text-[#fff8e9]/90 sm:text-sm">Un popor al Carpaților. Cetăți ridicate în munți, credințe în nemurire și o moștenire care încă ne vorbește. Descoperă civilizația din spatele legendelor.</p><div className="mt-9 flex flex-wrap gap-3"><Button asChild className="action-button bg-primary text-white hover:bg-primary/90"><Link to="/originea">Începe călătoria <ArrowRight size={16} /></Link></Button><Button asChild variant="outline" className="action-button border-[#fff8e9]/40 bg-transparent text-[#fff8e9] hover:bg-[#fff8e9]/10 hover:text-[#fff8e9]"><a href="#teme">Explorează cele 10 teme <ArrowDown size={15} /></a></Button></div></div>
       </div>
-      <MadeWithDyad />
-    </div>
-  );
-};
-
-export default Index;
+      <div className="container-wide relative flex items-center justify-between gap-3 pb-6 text-[9px] text-[#fff8e9]/80"><span className="flex items-center gap-2"><MapPin size={12} /> Inspirat de Munții Orăștiei, România</span><span className="hidden sm:block">Reconstituire artistică · imagine generată cu AI</span></div>
+    </section>
+    <div className="border-b bg-secondary/40"><div className="container-wide grid grid-cols-2 gap-5 py-6 md:grid-cols-4">{[{ icon: BookOpen, title: '10 teme de explorat', text: 'O civilizație, multe perspective' }, { icon: Compass, title: 'O hartă interactivă', text: 'Descoperă locurile trecutului' }, { icon: Sparkles, title: 'Istorie, nu doar legende', text: 'Surse și interpretări explicate' }, { icon: Mountain, title: 'Moștenirea noastră', text: 'Cunoaște. Înțelege. Păstrează.' }].map(({ icon: Icon, title, text }) => <div key={title} className="flex items-center gap-3"><Icon size={23} strokeWidth={1.3} className="shrink-0 text-primary" /><div><p className="text-[11px] font-bold">{title}</p><p className="mt-1 text-[9px] text-muted-foreground">{text}</p></div></div>)}</div></div>
+    <section id="teme" className="container-wide py-16 sm:py-20"><div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="eyebrow text-primary">Un trecut care merită descoperit</p><h2 className="section-title mt-4">Zece porți către <span className="italic text-primary">Dacia.</span></h2></div><p className="max-w-[370px] text-xs leading-[1.9] text-muted-foreground">De la originile unui neam la cuvintele pe care le rostim astăzi. Alege o temă și lasă curiozitatea să te poarte mai departe.</p></div><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{topics.map((t, i) => <TopicCard key={t.slug} topic={t} index={i} />)}</div><p className="mt-5 text-[10px] text-muted-foreground">Imaginile tematice sunt interpretări artistice, nu fotografii ale unor dovezi istorice.</p></section>
+    <section className="border-y bg-secondary/45"><div className="container-wide grid items-center gap-10 py-14 md:grid-cols-2"><div className="topographic relative flex min-h-[280px] flex-col items-center justify-center overflow-hidden rounded-xl border border-[hsl(var(--bronze))]/30 bg-[#e9e2d3] p-8"><Compass size={100} strokeWidth={.7} className="text-[hsl(var(--bronze))]" /><span className="font-display mt-3 text-4xl font-semibold text-[hsl(var(--forest))]">Terra Dacorum</span><span className="eyebrow mt-3 !text-[9px] text-muted-foreground">Carpați · Dunăre · Marea Neagră</span><span className="absolute left-5 top-5 text-[9px] font-semibold text-primary">ATLAS INTERACTIV / 02</span></div><div><p className="eyebrow text-primary">Pe urmele cetăților</p><h2 className="section-title mt-4">Istoria are<br />un <span className="italic">loc al ei.</span></h2><p className="mt-5 max-w-md text-xs leading-[1.9] text-muted-foreground">Călătorește prin regiunile lumii geto-dacice. Selectează o regiune, descoperă așezările și află de ce munții au devenit centrul unui regat.</p><Button asChild variant="outline" className="action-button mt-7 border-primary/40 bg-transparent text-primary hover:bg-primary/5"><Link to="/raspandire-geografica#harta">Explorează harta <ArrowUpRight size={16} /></Link></Button></div></div></section>
+    <section className="container-wide py-16"><div className="relative overflow-hidden rounded-2xl bg-[hsl(var(--forest))] p-8 text-[#fff8e9] sm:p-12 lg:p-14"><div className="grid items-center gap-9 md:grid-cols-[1fr_auto]"><div className="max-w-2xl"><p className="eyebrow text-[#e6c497]">Proba curiozității</p><h2 className="mt-4 text-4xl font-medium leading-tight sm:text-5xl">Cât din poveste ai păstrat?</h2><p className="mt-4 max-w-lg text-xs leading-[1.9] text-[#fff8e9]/75">10 întrebări. Fără cronometru. O ocazie de a descoperi ce ai învățat despre daci — cu explicații la fiecare răspuns.</p></div><div><Button asChild className="action-button bg-[#eddbbc] text-[hsl(var(--forest))] hover:bg-[#fff8e9]"><Link to="/test">Începe testul <ArrowRight size={16} /></Link></Button><p className="mt-3 text-center text-[9px] text-[#fff8e9]/65">Aproximativ 5 minute · fără cont</p></div></div></div></section>
+  </>;
+}
