@@ -41,12 +41,12 @@ test("Finalizează testul cu o întrebare despre fiecare dintre cele zece teme",
     "Sarmizegetusa Regia",
     "O agrafă metalică pentru haine",
     "Credința în nemurire",
-    "Agricultura, creșterea animalelor și metalurgia",
+    "Agricultura, creșterea animalelor și prelucrarea metalelor",
     "101–102 și 105–106 d.Hr.",
     "Porumbul",
     "Stratul latin",
     "Nu; textul și realitatea povestită trebuie diferențiate",
-    "Vase ceramice, fibule și brățări",
+    "Vase ceramice, fibule și brățări din aur și argint",
   ];
   for (let i = 0; i < answers.length; i++) {
     await expect(page.getByText(`Întrebarea ${i + 1} din 10`, { exact: true })).toBeVisible();
