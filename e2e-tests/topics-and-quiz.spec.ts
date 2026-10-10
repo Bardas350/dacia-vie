@@ -17,6 +17,14 @@ test("Explorează zece teme cu imagini distincte, inclusiv arta și religia unif
   }
   await cards.filter({ has: page.getByRole("heading", { name: "Artă", exact: true }) }).click();
   await expect(page).toHaveURL(/\/arta$/);
+  for (const name of ["Brățară spiralată din aur cu motive decorative.", "Coiful de aur de la Coțofenești, vedere frontală.", "Instrument de suflat cu protomă animală, tip carnyx."]) {
+    const photo = page.getByRole("img", { name, exact: true });
+    await photo.scrollIntoViewIfNeeded();
+    await expect(photo).toBeVisible();
+    const response = await page.request.get((await photo.getAttribute("src"))!);
+    expect(response.headers()["content-type"]).toContain("image/");
+  }
+  await expect(page.locator("article figcaption")).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Ceramică, sculptură și motive decorative" })).toBeVisible();
   await page.goto("/zei");
   await expect(page).toHaveURL(/\/religie$/);

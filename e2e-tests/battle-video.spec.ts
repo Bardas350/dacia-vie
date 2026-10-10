@@ -7,6 +7,12 @@ test("Încarcă playerul video doar la cererea vizitatorului", async ({ page }) 
     body: "<!doctype html><html><body>Player extern</body></html>",
   }));
   await page.goto("/tactici-de-lupta");
+  await expect(page.getByRole("heading", { name: "Sistemul de fortificații și apărarea pasivă" })).toBeVisible();
+  const falx = page.getByRole("img", { name: "Falx cu lamă curbată și mâner din lemn.", exact: true });
+  await falx.scrollIntoViewIfNeeded();
+  await expect(falx).toBeVisible();
+  const response = await page.request.get((await falx.getAttribute("src"))!);
+  expect(response.headers()["content-type"]).toContain("image/");
   const player = page.locator('iframe[title="Material video despre daci — YouTube"]');
   await expect(player).toHaveCount(0);
   await page.getByRole("button", { name: "Încarcă videoclipul" }).click();

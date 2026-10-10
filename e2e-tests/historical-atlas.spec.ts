@@ -5,6 +5,7 @@ test("Parcurge capitolele până la artă și consultă atlasul istoric", async 
   await expect(page.getByRole("heading", { name: "Rădăcinile și Scindarea Tracilor" })).toBeVisible();
   const photos = page.locator('article img[src^="/assets/origine-"]');
   await expect(photos).toHaveCount(2);
+  await expect(page.locator("article figcaption")).toHaveCount(0);
   for (const src of await photos.evaluateAll(elements => elements.map(e => e.getAttribute("src")))) {
     const response = await page.request.get(src!);
     expect(response.headers()["content-type"]).toContain("image/");
@@ -36,6 +37,10 @@ test("Parcurge capitolele până la artă și consultă atlasul istoric", async 
     await expect(page.getByTestId("topic-transition")).toBeVisible();
     await page.getByRole("link", { name: `Continuă cu ${title}`, exact: true }).click();
     await expect(page.getByRole("heading", { level: 1, name: title, exact: true })).toBeVisible();
+    if (title === "Vestimentație") {
+      await expect(page.getByRole("heading", { name: "Îmbrăcămintea bărbaților", exact: true })).toBeVisible();
+      await expect(page.locator("#sectiune-1 li")).toHaveCount(5);
+    }
   }
   await expect(page.getByText("Tema 10 / 10", { exact: false })).toBeVisible();
   await expect(page.getByTestId("topic-transition")).toHaveCount(0);
