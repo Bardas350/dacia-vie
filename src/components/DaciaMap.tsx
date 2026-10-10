@@ -1,29 +1,38 @@
 import { useState } from "react";
-import { Compass, MapPin, Landmark, ArrowUpRight } from "lucide-react";
+import { Compass, MapPin, Minus, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const regions = [
-  { name: 'Transilvania', x: 269, y: 184, path: 'M155 96 L205 65 L255 88 L302 65 L335 100 L340 152 L365 195 L328 233 L276 253 L226 241 L186 211 L150 169 Z', subtitle: 'În inima arcului carpatic', text: 'Regiune centrală a regatului dac. Munții Orăștiei concentrează cetăți și sanctuare, iar văile leagă zonele de locuire și de producție.', sites: ['Sarmizegetusa Regia — centru politic și religios', 'Costești-Cetățuie și Blidaru — fortificații de înălțime', 'Piatra Roșie, Bănița și Căpâlna — cetăți UNESCO'] },
-  { name: 'Banat', x: 132, y: 227, path: 'M150 169 L186 211 L179 265 L151 286 L105 263 L82 218 L103 186 Z', subtitle: 'Drumuri spre Dunăre', text: 'Regiunea sud-vestică oferă treceri dinspre Dunăre spre interiorul arcului carpatic. Tapae este asociată cu accesul către centrul regatului; localizarea exactă a câmpului de luptă rămâne discutată.', sites: ['Tapae — zonă a confruntărilor daco-romane', 'Culoarul Bistrei — legătură între regiuni'] },
-  { name: 'Oltenia', x: 226, y: 290, path: 'M186 211 L226 241 L276 253 L261 297 L276 336 L220 352 L181 322 L151 286 L179 265 Z', subtitle: 'Între munți și fluviu', text: 'Spațiul dintre Carpați și Dunăre face parte din zona de contact cu lumea romană. Drobeta devine un reper al infrastructurii campaniilor lui Traian, nu capitală dacică.', sites: ['Drobeta — reper roman al traversării Dunării', 'Valea Oltului — coridor natural de circulație'] },
-  { name: 'Muntenia', x: 346, y: 290, path: 'M276 253 L328 233 L365 195 L391 231 L425 270 L431 315 L383 340 L329 347 L276 336 L261 297 Z', subtitle: 'Așezări la sud de Carpați', text: 'Câmpiile și dealurile de la sud de Carpați aparțin spațiului geto-dacic. Fluviul este atât cale de schimb, cât și zonă de confruntare cu Roma. Regiunile actuale sunt folosite aici numai ca repere.', sites: ['Spațiul Argeșului — așezări geto-dacice', 'Dunărea de Jos — schimburi și contacte militare'] },
-  { name: 'Moldova', x: 399, y: 155, path: 'M302 65 L332 37 L366 54 L387 87 L405 130 L443 173 L452 219 L425 270 L391 231 L365 195 L340 152 L335 100 Z', subtitle: 'La est de Carpați', text: 'Comunitățile geto-dacice se dezvoltă și la est de Carpați. Această zonă nu coincide cu provincia romană Dacia. Frontierele politice, distribuția așezărilor și influențele culturale trebuie diferențiate.', sites: ['Văile Siretului și Prutului — axe de locuire', 'Carpații Orientali — legături cu interiorul arcului'] },
-  { name: 'Dobrogea', x: 474, y: 292, path: 'M452 219 L488 230 L508 253 L494 294 L511 323 L474 348 L431 315 L425 270 Z', subtitle: 'La întâlnirea cu lumea greacă', text: 'Geții intră în contact cu cetățile grecești de pe țărmul Mării Negre. Histria, Tomis și Callatis sunt cetăți grecești, nu fundații dacice. Ele ajută la înțelegerea comerțului și a influențelor regionale.', sites: ['Histria — cetate greacă și contacte cu geții', 'Tomis și Callatis — centre ale lumii pontice'] },
+const stages = [
+  { title: "Tracii", period: "Mileniul I î.Hr.", image: "/assets/harta-traci.jpeg", text: "Lumea tracică se dezvoltă în sud-estul Europei, în Peninsula Balcanică și în apropierea Dunării. Conturul roșu din imagine este orientativ." },
+  { title: "Dacii și geții", period: "Secolele V–III î.Hr. și perioada următoare", image: "/assets/harta-daci-geti.jpeg", text: "Comunitățile dacice și getice ocupă spațiul din jurul Carpaților, al Dunării și al Mării Negre. Răspândirea lor nu presupune un singur stat permanent." },
+  { title: "Dacia sub Burebista", period: "Aproximativ 82–44 î.Hr.", image: "/assets/harta-burebista.jpeg", text: "Porțiunile mov ale hărții furnizate ilustrează extinderea propusă pentru perioada lui Burebista, dincolo de conturul roșu. Întinderea exactă și natura controlului rămân discutate." },
+  { title: "Dacia sub Decebal", period: "Sfârșitul secolului I – începutul secolului II d.Hr.", image: "/assets/harta-decebal.jpeg", text: "Regatul lui Decebal are centrul politic și religios la Sarmizegetusa Regia. Acesta nu trebuie confundat cu provincia romană creată după cucerirea din 106 d.Hr." },
 ];
+
 export default function DaciaMap() {
   const [selected, setSelected] = useState(0);
-  const region = regions[selected];
-  return <section id="harta" className="my-12 rounded-2xl border bg-card p-5 sm:p-8">
-    <div className="mb-7 flex items-start justify-between gap-4"><div><p className="eyebrow text-primary">Atlas interactiv</p><h2 className="mt-2 text-3xl font-semibold sm:text-4xl">Alege un loc. Descoperă o poveste.</h2><p className="mt-3 text-xs leading-relaxed text-muted-foreground">Apasă pe o regiune sau alege-o din lista de mai jos.</p></div><Compass className="hidden shrink-0 text-[hsl(var(--bronze))] sm:block" size={36} strokeWidth={1} /></div>
-    <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-      <div className="topographic rounded-xl border bg-[#ece6d9] p-3 sm:p-5"><svg viewBox="50 15 520 370" className="w-full" aria-label="Hartă schematică interactivă a regiunilor actuale din spațiul geto-dacic">
-        <text x="548" y="52" textAnchor="middle" fontSize="12" fill="#766344">N</text><path d="M548 61 L542 75 L548 71 L554 75 Z" fill="#766344" />
-        {regions.map((r, i) => <g key={r.name} role="button" tabIndex={0} aria-label={`Explorează ${r.name}`} aria-pressed={selected === i} className="cursor-pointer outline-none" onClick={() => setSelected(i)} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelected(i); } }}><path d={r.path} fill={selected === i ? '#a34432' : '#d2c4ab'} stroke="#f7f3eb" strokeWidth="3" className="transition-colors hover:fill-[#b5926b] focus:fill-[#b5926b]" /><text x={r.x} y={r.y} textAnchor="middle" fill={selected === i ? '#fff8e9' : '#493e2b'} fontSize="12" fontWeight="600" pointerEvents="none">{r.name}</text></g>)}
-        <path d="M161 304 Q185 350 223 357 T306 355 T387 349 Q426 344 429 322" fill="none" stroke="#738f99" strokeWidth="3" strokeDasharray="5 4" /><text x="326" y="378" fill="#526f7b" fontSize="10" letterSpacing="3">DUNĂREA</text><text x="529" y="275" fill="#526f7b" fontSize="9" transform="rotate(80 529 275)" letterSpacing="2">MAREA NEAGRĂ</text>
-        <circle cx="251" cy="233" r="5" fill="#edc686" stroke="#493e2b" strokeWidth="1.5" pointerEvents="none" /><text x="259" y="232" fontSize="8" fill={selected === 0 ? '#fff8e9' : '#493e2b'} pointerEvents="none">Sarmizegetusa Regia</text>
-      </svg><div className="mt-2 flex items-center gap-2 text-[9px] text-muted-foreground"><span className="h-2 w-2 rounded-full bg-primary" /> Regiune selectată <span className="ml-3 h-2 w-2 rounded-full bg-[#edc686]" /> Reper dacic</div></div>
-      <div aria-live="polite" className="rounded-xl bg-secondary/40 p-6"><span className="eyebrow flex items-center gap-2 !text-[9px] text-primary"><MapPin size={13} /> {region.subtitle}</span><h3 className="mt-3 text-4xl font-semibold">{region.name}</h3><p className="mt-4 text-xs leading-[1.9] text-muted-foreground">{region.text}</p><p className="eyebrow mt-6 !text-[9px]">Locuri și repere</p><ul className="mt-3 space-y-3">{region.sites.map(s => <li key={s} className="flex items-start gap-2 text-[11px] leading-relaxed"><Landmark size={14} className="mt-0.5 shrink-0 text-primary" />{s}</li>)}</ul></div>
-    </div>
-    <div className="mt-5 flex flex-wrap gap-2" aria-label="Selectează regiunea">{regions.map((r, i) => <button key={r.name} aria-pressed={selected === i} className={`rounded-full border px-4 py-2 text-[11px] font-semibold transition-colors ${selected === i ? 'border-primary bg-primary text-white' : 'bg-card hover:border-primary hover:text-primary'}`} onClick={() => setSelected(i)}>{r.name}</button>)}</div>
-    <p className="mt-5 text-[10px] leading-relaxed text-muted-foreground">Schemă orientativă, fără scară și fără frontiere antice. Regiunile sunt repere moderne. Poziția capitalei este aproximativă.</p><a href="https://whc.unesco.org/en/list/906/maps/" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1 text-[10px] font-semibold text-primary">Consultă coordonatele celor șase cetăți pe UNESCO <ArrowUpRight size={12} /></a>
-  </section>;
+  const [zoom, setZoom] = useState(1);
+  const stage = stages[selected];
+
+  return (
+    <section id="harta" className="my-12 rounded-2xl border bg-card p-5 sm:p-8">
+      <div className="flex items-start justify-between gap-4">
+        <div><p className="eyebrow text-primary">Atlas istoric interactiv</p><h2 className="mt-2 text-3xl font-semibold sm:text-4xl">Patru etape. Un spațiu în schimbare.</h2><p className="mt-3 text-xs leading-relaxed text-muted-foreground">Alege o etapă pentru a schimba harta. Mărește imaginea și deplasează-te prin ea pentru a vedea detaliile.</p></div>
+        <Compass size={36} strokeWidth={1} className="hidden shrink-0 text-[hsl(var(--bronze))] sm:block" />
+      </div>
+      <div className="my-6 grid grid-cols-1 gap-2 sm:grid-cols-2" role="group" aria-label="Etape istorice">
+        {stages.map((item, i) => <Button key={item.title} variant="outline" aria-pressed={selected === i} onClick={() => { setSelected(i); setZoom(1); }} className={`h-auto justify-start whitespace-normal rounded-xl px-4 py-3 text-left text-xs ${selected === i ? 'border-primary bg-primary text-white hover:bg-primary/90 hover:text-white' : 'bg-secondary/30 hover:border-primary'}`}><span className="mr-2 opacity-80">0{i + 1}</span>{item.title}</Button>)}
+      </div>
+      <div className="grid gap-5 lg:grid-cols-[1.7fr_1fr]">
+        <div className="min-w-0">
+          <div className="mb-3 flex items-center justify-between gap-3"><span className="text-[11px] font-semibold text-primary">Harta {selected + 1} / 4</span><div className="flex items-center gap-2"><Button variant="outline" size="icon" aria-label="Micșorează harta" disabled={zoom === 1} onClick={() => setZoom(Math.max(1, zoom - 0.5))} className="h-8 w-8 rounded-full"><Minus size={14} /></Button><span className="w-10 text-center text-[11px]">{zoom * 100}%</span><Button variant="outline" size="icon" aria-label="Mărește harta" disabled={zoom === 2.5} onClick={() => setZoom(Math.min(2.5, zoom + 0.5))} className="h-8 w-8 rounded-full"><Plus size={14} /></Button></div></div>
+          <div className="max-h-[520px] overflow-auto rounded-xl border bg-secondary/30" tabIndex={0} role="region" aria-label="Hartă cu derulare">
+            <div style={{ width: `${zoom * 100}%` }}><img src={stage.image} alt={`Hartă istorică orientativă — ${stage.title}`} className="block h-auto w-full" /></div>
+          </div>
+        </div>
+        <div className="rounded-xl bg-secondary/40 p-6" aria-live="polite"><p className="eyebrow !text-[9px] text-primary">{stage.period}</p><h3 className="mt-3 text-3xl font-semibold">{stage.title}</h3><p className="mt-4 text-xs leading-[1.9] text-muted-foreground">{stage.text}</p><div className="mt-6 border-t pt-5"><p className="flex items-center gap-2 text-xs font-bold text-primary"><MapPin size={16} /> Sarmizegetusa Regia</p><p className="mt-3 text-xs leading-relaxed text-muted-foreground">Singurul sit localizat în atlas. Este marcat cu albastru pe harta lui Decebal; pentru celelalte epoci nu este prezentat ca o capitală contemporană.</p>{selected !== 3 && <Button variant="outline" onClick={() => { setSelected(3); setZoom(1); }} className="mt-4 h-auto rounded-full border-primary/40 px-4 py-2 text-xs text-primary">Localizează Sarmizegetusa Regia</Button>}</div></div>
+      </div>
+      <p className="mt-5 text-[10px] leading-relaxed text-muted-foreground">Hărți furnizate de utilizator, cu repere geografice moderne și contururi desenate orientativ. Nu reprezintă frontiere antice certe sau hărți la aceeași scară. Denumirile moderne de pe fundal sunt doar repere.</p>
+    </section>
+  );
 }
