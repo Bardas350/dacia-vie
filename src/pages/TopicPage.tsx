@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BookOpen, Info, ArrowUpRight } from "lucide-react";
 import { topics, sources } from "@/data/topics";
@@ -6,10 +7,14 @@ import DaciaMap from "@/components/DaciaMap";
 import BattleVideo from "@/components/BattleVideo";
 import SectionImages from "@/components/SectionImages";
 import NotFound from "@/pages/NotFound";
+import { markTopicRead } from "@/lib/progress";
 
 export default function TopicPage() {
   const { slug } = useParams();
   const topic = topics.find(t => t.slug === slug);
+  useEffect(() => {
+    if (slug && topic) markTopicRead(slug);
+  }, [slug, topic]);
   if (!topic) return <NotFound />;
   const index = topics.indexOf(topic);
   const nextTopic = topics[index + 1];

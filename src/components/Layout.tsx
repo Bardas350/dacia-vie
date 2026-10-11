@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { ArrowUpRight, ChevronDown, Menu, Moon, Mountain, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AccessibilityControls from "@/components/AccessibilityControls";
 import { topics } from "@/data/topics";
 
 export function Brand() {
@@ -40,10 +41,12 @@ export default function Layout() {
             {themes && <div id="themes-menu" className="absolute left-0 top-full w-64 rounded-xl border bg-card p-2 shadow-lg">{topics.map((t, i) => <Link key={t.slug} to={`/${t.slug}`} className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-secondary"><span className="text-[10px] text-primary">{String(i + 1).padStart(2, '0')}</span>{t.title}</Link>)}</div>}
           </div>
           <NavLink to="/raspandire-geografica" className="flex items-center gap-1.5 hover:text-primary">Harta Daciei <ArrowUpRight size={14} /></NavLink>
+          <AccessibilityControls />
           <button type="button" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-primary transition-colors hover:bg-secondary" aria-label={themeLabel} title={themeLabel} data-testid="theme-toggle" onClick={() => setDarkMode(!darkMode)}>{darkMode ? <Sun size={17} /> : <Moon size={17} />}</button>
           <Button asChild className="h-10 rounded-lg px-5 text-[11px] font-bold"><Link to="/test">Testează-ți cunoștințele <ArrowUpRight size={15} /></Link></Button>
         </nav>
         <div className="flex items-center gap-2 md:hidden">
+          <AccessibilityControls />
           <button type="button" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-primary" aria-label={themeLabel} title={themeLabel} data-testid="theme-toggle" onClick={() => setDarkMode(!darkMode)}>{darkMode ? <Sun size={17} /> : <Moon size={17} />}</button>
           <Button variant="ghost" size="icon" className="rounded-full" aria-label={open ? 'Închide meniul' : 'Deschide meniul'} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
         </div>

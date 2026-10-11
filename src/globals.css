@@ -51,6 +51,20 @@
     --forest: 146 35% 70%;
     --bronze: 35 68% 66%;
   }
+  .text-large { font-size: 112.5%; }
+  .high-contrast {
+    --foreground: 30 12% 8%;
+    --muted-foreground: 30 10% 25%;
+    --border: 35 20% 55%;
+    --primary: 10 66% 32%;
+  }
+  .dark.high-contrast {
+    --foreground: 40 35% 98%;
+    --muted-foreground: 40 18% 82%;
+    --border: 150 10% 43%;
+    --primary: 29 78% 70%;
+  }
+  .reduce-motion, .reduce-motion * { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
   * { @apply border-border; }
   html { scroll-behavior: smooth; scroll-padding-top: 110px; }
   body { @apply bg-background text-foreground antialiased; font-family: 'Manrope', sans-serif; }
