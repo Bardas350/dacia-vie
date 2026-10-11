@@ -108,36 +108,36 @@ export const topics: Topic[] = [
     "text": "Religia dacilor se manifesta și prin ceremonii, ritualuri și locuri de cult. Un important centru religios se afla la Sarmizegetusa Regia, unde au fost descoperite sanctuare circulare și patrulatere. Aceste construcții demonstrează importanța practicilor religioase în societatea dacică. Ceremoniile aveau probabil legătură cu zeii, cu natura și cu diferite momente importante ale anului. De asemenea, credința în viața de după moarte este sugerată de unele practici funerare și de obiectele descoperite în morminte."
   }
 ], note: "Precizare: caracterizarea religiei drept monoteistă nu este un fapt stabilit. Asocierea lui Gebeleizis cu furtuna este o interpretare; rolurile divinităților și relația dintre ele rămân discutate.", sources: ["herodotus", "unesco", "bendis"], related: ["arta", "legende", "obiceiuri"] },
-  { slug: "obiceiuri", transition: "Multe obiceiuri războinice au definit acele tactici de luptă bazate pe atacuri surpriză.", title: "Obiceiuri", eyebrow: "Viața dintre ziduri", description: "Dacii au fost un popor antic care a trăit pe teritoriul actual al României și în regiunile învecinate. Ei făceau parte din grupul tracilor și aveau obiceiuri legate de religie, familie, înmormântare, muncă și război. Informațiile despre tradițiile lor provin din scrierile autorilor antici și din descoperirile arheologice.", image: life, icon: Users, sections: [
-  {
-    "title": "Sanctuarele și ritualurile religioase",
-    "text": "Religia avea un rol important în viața dacilor. Sanctuarele descoperite la Sarmizegetusa Regia, capitala regatului dac, demonstrează importanța ritualurilor religioase. Preoții aveau un rol important în comunitate și participau la ceremoniile religioase."
-  },
-  {
-    "title": "Obiceiurile legate de familie și căsătorie",
-    "text": "Familia era importantă în societatea dacică, membrii acesteia colaborând la muncile gospodărești și la creșterea animalelor. Există puține informații sigure despre ceremoniile de căsătorie. Unele relatări antice descriu tradiții ale populațiilor tracice legate de familie și de ritualurile funerare."
-  },
-  {
-    "title": "Tradițiile gospodărești",
-    "text": "Dacii se ocupau cu agricultura, creșterea animalelor și meșteșugurile. Cultivau cereale, creșteau oi și vite, confecționau vase din lut și prelucrau fierul pentru a realiza unelte și arme. De asemenea, făceau schimb de produse cu alte populații, inclusiv cu grecii și romanii."
-  },
-  {
-    "title": "Sacrificiul soțiilor la moartea bărbaților",
-    "text": "Pomponius Mela, un autor antic, descrie un obicei al unor comunități tracice în care soția preferată a unui bărbat decedat era sacrificată și înmormântată alături de acesta. Potrivit relatării, femeile considerau această practică o onoare. Totuși, nu există dovezi că obiceiul era întâlnit la toți dacii."
-  },
-  {
-    "title": "Obiceiurile de înmormântare",
-    "text": "Dacii practicau frecvent incinerația, adică arderea trupurilor celor decedați. Cenușa și oasele arse erau uneori depuse în urne funerare, alături de vase ceramice sau podoabe. Aceste descoperiri arheologice ne ajută să înțelegem ritualurile funerare ale comunităților geto-dacice."
-  },
-  {
-    "title": "Tatuajele și semnele de pe corp",
-    "text": "Unele materiale despre populațiile tracice sugerează că tatuajele ar fi putut indica apartenența la un grup sau statutul social. Totuși, dovezile directe privind tatuajele dacilor sunt limitate, așa că nu putem afirma cu certitudine că acestea reprezentau un obicei general. Îmbrăcămintea dacilor este ilustrată pe Columna lui Traian, unde apar purtând tunici, pantaloni și mantii."
-  },
-  {
-    "title": "Obiceiurile războinice ale dacilor",
-    "text": "Dacii puneau accent pe apărarea teritoriului și construiau cetăți fortificate. Foloseau arme precum falxul, o armă cu lamă curbată, săbii și sulițe. Războaiele dintre daci și romani, desfășurate în anii 101–102 și 105–106 d.Hr., sunt reprezentate pe Columna lui Traian, la Roma."
-  }
-], note: "Relatările despre comunități tracice nu trebuie generalizate la toți dacii. Practicile funerare și războinice diferă în funcție de loc și epocă.", sources: ["britannica", "herodotus"], related: ["vestimentatie", "gastronomie", "religie"] },
+  { slug: "obiceiuri", transition: "Obicele dacice au fost transmise de geração în generație prin vorbe și cărți manuscrise.", title: "Obiceiuri", eyebrow: "Tradiții și costumi", description: "Obiceiurile dacice reflectă viața socială, religioasă și militară a comunităților geto-dacice. Aceste practici au fost documentate de autori antici și de descoperiri arheologice.", image: sanctuary, icon: Sprout, sections: [
+    {
+      "title": "Sanctuarele și ritualurile religioase",
+    "text": "Sanctuarele dacice reprezintă dovezi importante ale vieții spirituale. Cele mai cunoscute se află în zona Sarmizegetusei Regia, unde au fost descoperite construcții cu caracter religios.\n\nAceste locuri erau folosite pentru activități de cult și arată că religia nu se limita la credințele individuale, ci avea și o dimensiune comunitară. Oamenii participau la ritualuri, iar preoții aveau un rol important în practicile religioase.\n\nSanctuarele de la Sarmizegetusa Regia demonstrează că dacii amenajau spații speciale pentru activitățile religioase. Ele reprezintă dovezi arheologice importante pentru înțelegerea spiritualității geto-dacilor."
+    },
+    {
+      "title": "Obiceiurile legate de familie și căsătorie",
+      "text": "Familia avea un rol important în societatea dacică. Membrii comunității colaborau pentru a obține hrana, a crește animalele și a realiza obiectele necesare gospodăriei.\n\nDespre ceremoniile de căsătorie ale dacilor există puține informații sigure. Autorii antici au descris unele obiceiuri ale populațiilor tracice, dar acestea nu pot fi atribuite automat tuturor dacilor.\n\nRelatările despre sacrificiul soțiilor după moartea bărbaților sugerează că, în anumite comunități, relațiile de familie puteau fi legate de credințele religioase și de ritualurile funerare. Totuși, nu trebuie să considerăm această practică reprezentativă pentru toate familiile dacice.\n\nRelatarea lui Pomponius Mela despre sacrificiul soțiilor este un exemplu al felului în care unele populații tracice își exprimau credințele prin ritualuri legate de moarte și familie."
+    },
+    {
+      "title": "Tradițiile gospodărești",
+      "text": "Viața de zi cu zi a dacilor era strâns legată de agricultură și de creșterea animalelor. Oamenii cultivau cereale, creșteau oi și vite și foloseau resursele naturale pentru a-și asigura hrana.\n\nPe lângă agricultură, dacii practicau diferite meșteșuguri. Ei confecționau vase ceramice, prelucrau fierul și realizau unelte necesare muncii și gospodăriei. Aceste activități erau esențiale pentru supraviețuirea comunităților:\n\n• Cultivarea cerealelor pentru prepararea hranei.\n• Creșterea animalelor pentru carne, lapte și lână.\n• Confecționarea vaselor din lut pentru păstrarea alimentelor.\n• Prelucrarea fierului pentru realizarea uneltelor agricole.\n• Schimbul de produse cu alte populații, inclusiv cu grecii și romanii.\n\nAceste activități arată că dacii aveau o economie diversificată și cunoșteau numeroase tehnici de producție."
+    },
+    {
+      "title": "Sacrificiul soțiilor la moartea bărbaților",
+      "text": "Unul dintre cele mai neobișnuite obiceiuri descrise de autorii antici este legat de moartea bărbaților și de rolul soțiilor în ritualurile funerare.\n\nScriitorul antic Pomponius Mela relatează că, în anumite comunități tracice, moartea unui bărbat putea fi urmată de sacrificarea soției considerate preferate. Potrivit descrierii sale, femeile se întreceau pentru a obține această onoare, iar cea aleasă era sacrificată și înmormântată alături de soț.\n\nAcest ritual era legat de credințele despre moarte și despre relația dintre persoana decedată și cei rămași în viață. Totuși, relatarea trebuie interpretată cu prudență, deoarece se referă la anumite populații tracice și nu demonstrează că practica era întâlnită la toți dacii.\n\nPotrivit lui Pomponius Mela, dacă un bărbat murea, soțiile sale puteau participa la o competiție pentru a fi aleasă cea care urma să fie sacrificată. Femeia aleasă era considerată cea mai onorată. Această descriere arată cât de diferite puteau fi unele credințe funerare ale populațiilor antice față de cele din prezent."
+    },
+    {
+      "title": "Obiceiurile de înmormântare",
+      "text": "Dacii aveau ritualuri funerare care reflectau credințele lor despre moarte. Una dintre practicile întâlnite frecvent era incinerația, adică arderea trupului persoanei decedate.\n\nDupă incinerare, cenușa și resturile osoase puteau fi adunate și depuse în urne funerare. În unele morminte au fost descoperite vase ceramice, podoabe și obiecte personale. Acestea îi ajută pe istorici să înțeleagă ritualurile și obiceiurile comunităților antice.\n\nPracticile funerare nu erau identice în toate regiunile și perioadele. Descoperirile arheologice arată că existau diferențe între comunități, iar unele ritualuri nu sunt cunoscute în detaliu.\n\nArheologii au descoperit morminte de incinerație în care cenușa și oasele arse erau depuse în urne. Aceste descoperiri demonstrează că arderea trupurilor era o practică importantă în lumea geto-dacică."
+    },
+    {
+      "title": "Tatuajele și semnele de pe corp",
+      "text": "Tatuajele sunt un alt subiect întâlnit în unele prezentări despre populațiile tracice. În anumite surse moderne se sugerează că tatuajele ar fi putut indica apartenența la un grup, statutul social sau alte caracteristici ale persoanei.\n\nCu toate acestea, dovezile directe privind practicarea tatuajelor de către daci sunt limitate. Nu putem afirma cu certitudine că toți dacii se tatuau sau că tatuajele aveau aceeași semnificație în toate comunitățile.\n\nAspectul fizic al dacilor este cunoscut mai ales prin reprezentările artistice antice, în special prin scenele de pe Columna lui Traian. Acestea îi înfățișează purtând tunici, pantaloni și mantii, dar nu oferă dovezi clare care să stabilească existența unei tradiții generale a tatuajelor.\n\nÎn unele materiale moderne despre traci se menționează posibilitatea folosirii tatuajelor ca semne de apartenență socială. Totuși, această informație trebuie prezentată ca o ipoteză, nu ca un fapt sigur despre toți dacii."
+    },
+    {
+      "title": "Obiceiurile războinice ale dacilor",
+      "text": "Dacii sunt cunoscuți și pentru tradițiile lor militare. Apărarea teritoriului era importantă, iar cetățile fortificate aveau un rol esențial în organizarea militară.\n\nUna dintre cele mai cunoscute arme dacice era falxul, o armă cu lamă curbată. Războinicii foloseau și alte arme, precum săbiile, sulițele și arcurile.\n\nÎn timpul domniei lui Decebal, dacii s-au confruntat cu Imperiul Roman în două războaie importante, desfășurate în anii 101–102 și 105–106 d.Hr. Fortificațiile din Munții Orăștiei demonstrează preocuparea dacilor pentru apărarea teritoriului.\n\nPe Columna lui Traian din Roma sunt reprezentate scene din războaiele daco-romane, inclusiv confruntări militare și războinici daci. Monumentul oferă informații despre armament și despre modul în care romanii reprezentau luptele, deși prezintă perspectiva romană asupra evenimentelor."
+    }
+  ], note: "Relatările despre comunități tracice nu trebuie generalizate la toți dacii. Practicile funerare și războinice diferă în funcție de loc și epocă.", sources: ["britannica", "herodotus"], related: ["vestimentatie", "gastronomie", "religie"] },
   { slug: "tactici-de-lupta", transition: "Efortul depus în aceste tactici de luptă necesita o gastronomie dacică foarte consistentă.", title: "Tactici de luptă", eyebrow: "Terenul. Armele. Strategia.", description: "Strategiile și tacticile de luptă ale dacilor s-au adaptat continuu de-a lungul secolelor în funcție de teren, resurse și adversari (de la popoarele nomade vecine până la invaziile macedonene și cele ale Legiunilor Romane). Dacii erau cunoscuți ca războinici feroce și iscusiți, arta lor militară combinând defensiva pasivă (cetățile fortificate) cu tactica pământului pârjolit și atacul prin surprindere.", image: warriors, icon: Swords, sections: [
   {
     "title": "Apărarea prin uzură și „Pământul pârjolit”",
