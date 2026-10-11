@@ -41,17 +41,17 @@ test("Finalizează testul cu o întrebare despre fiecare dintre cele zece teme",
     "Sarmizegetusa Regia",
     "O agrafă metalică pentru haine",
     "Credința în nemurire",
-    "Secolul V î.Hr.",
+    "Secolul al V-lea î.Hr.",
     "Sarmizegetusa Regia",
     "101–102 d.Hr.",
     "Semințe carbonizate, resturi de animale, vase ceramice și unelte",
-    "Stratul latin",
-    "Vase ceramice, fibule și brățări din aur și argint",
+    "Limba latină",
+    "Brățările dacice din aur și coiful de aur de la Coțofenești",
   ];
   for (let i = 0; i < answers.length; i++) {
     await expect(page.getByText(`Întrebarea ${i + 1} din 10`, { exact: true })).toBeVisible();
     if (i === 9) {
-      await expect(page.getByRole("heading", { name: "Ce obiecte ne ajută să cunoaștem arta și meșteșugul dacic?" })).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Care sunt exemple de obiecte prezentate în tema despre arta geto-dacică?" })).toBeVisible();
     }
     await page.getByRole("button", { name: answers[i], exact: false }).click();
     await page.getByRole("button", { name: "Verifică răspunsul" }).click();
