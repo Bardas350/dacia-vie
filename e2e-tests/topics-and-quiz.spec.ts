@@ -5,7 +5,7 @@ test("Explorează zece teme cu imagini distincte, inclusiv arta și religia unif
   const cards = page.locator("#teme").getByRole("link");
   await expect(cards).toHaveCount(10);
   await expect(cards.last().getByRole("heading")).toHaveText("Artă");
-  const images = cards.getByRole("img", { name: /^Reconstituire artistică/ });
+  const images = cards.getByRole("img", { name: /^(Reconstituire artistică|Imagine originală)/ });
   await expect(images).toHaveCount(10);
   const paths = await images.evaluateAll(elements => elements.map(element => element.getAttribute("src")));
   expect(new Set(paths).size).toBe(10);
