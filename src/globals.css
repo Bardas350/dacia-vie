@@ -28,6 +28,29 @@
     --forest: 153 22% 20%;
     --bronze: 35 42% 48%;
   }
+  .dark {
+    --background: 150 18% 10%;
+    --foreground: 39 28% 91%;
+    --card: 150 16% 14%;
+    --card-foreground: 39 28% 91%;
+    --popover: 150 16% 14%;
+    --popover-foreground: 39 28% 91%;
+    --primary: 29 68% 61%;
+    --primary-foreground: 150 18% 10%;
+    --secondary: 150 13% 21%;
+    --secondary-foreground: 39 28% 91%;
+    --muted: 150 13% 21%;
+    --muted-foreground: 39 14% 69%;
+    --accent: 150 13% 24%;
+    --accent-foreground: 39 28% 91%;
+    --destructive: 0 62% 52%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 150 12% 29%;
+    --input: 150 12% 29%;
+    --ring: 29 68% 61%;
+    --forest: 146 35% 70%;
+    --bronze: 35 68% 66%;
+  }
   * { @apply border-border; }
   html { scroll-behavior: smooth; scroll-padding-top: 110px; }
   body { @apply bg-background text-foreground antialiased; font-family: 'Manrope', sans-serif; }

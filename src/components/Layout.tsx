@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import { ArrowUpRight, ChevronDown, Menu, Mountain, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, Moon, Mountain, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { topics } from "@/data/topics";
 
@@ -10,6 +10,11 @@ export function Brand() {
 export default function Layout() {
   const [open, setOpen] = useState(false);
   const [themes, setThemes] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const savedTheme = window.localStorage.getItem("dacia-vie-theme");
+    return savedTheme ? savedTheme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
   const location = useLocation();
   useEffect(() => {
     setOpen(false); setThemes(false);
@@ -18,6 +23,11 @@ export default function Layout() {
     if (location.hash) { requestAnimationFrame(() => document.getElementById(location.hash.slice(1))?.scrollIntoView()); }
     else window.scrollTo(0, 0);
   }, [location.pathname, location.hash]);
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    window.localStorage.setItem("dacia-vie-theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+  const themeLabel = darkMode ? "Activează modul luminos" : "Activează modul întunecat";
   return <div className="min-h-screen">
     <a href="#continut" className="sr-only focus:not-sr-only focus:fixed focus:left-5 focus:top-5 focus:z-50 focus:rounded-lg focus:bg-card focus:p-4">Sari la conținut</a>
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur-md">
@@ -30,9 +40,13 @@ export default function Layout() {
             {themes && <div id="themes-menu" className="absolute left-0 top-full w-64 rounded-xl border bg-card p-2 shadow-lg">{topics.map((t, i) => <Link key={t.slug} to={`/${t.slug}`} className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-secondary"><span className="text-[10px] text-primary">{String(i + 1).padStart(2, '0')}</span>{t.title}</Link>)}</div>}
           </div>
           <NavLink to="/raspandire-geografica" className="flex items-center gap-1.5 hover:text-primary">Harta Daciei <ArrowUpRight size={14} /></NavLink>
+          <button type="button" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-primary transition-colors hover:bg-secondary" aria-label={themeLabel} title={themeLabel} data-testid="theme-toggle" onClick={() => setDarkMode(!darkMode)}>{darkMode ? <Sun size={17} /> : <Moon size={17} />}</button>
           <Button asChild className="h-10 rounded-lg px-5 text-[11px] font-bold"><Link to="/test">Testează-ți cunoștințele <ArrowUpRight size={15} /></Link></Button>
         </nav>
-        <Button variant="ghost" size="icon" className="rounded-full md:hidden" aria-label={open ? 'Închide meniul' : 'Deschide meniul'} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
+        <div className="flex items-center gap-2 md:hidden">
+          <button type="button" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-primary" aria-label={themeLabel} title={themeLabel} data-testid="theme-toggle" onClick={() => setDarkMode(!darkMode)}>{darkMode ? <Sun size={17} /> : <Moon size={17} />}</button>
+          <Button variant="ghost" size="icon" className="rounded-full" aria-label={open ? 'Închide meniul' : 'Deschide meniul'} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
+        </div>
       </div>
       {open && <nav aria-label="Navigare mobilă" className="max-h-[75vh] overflow-y-auto border-t px-5 py-4 md:hidden"><Link to="/" className="block rounded-lg p-3 text-primary">Acasă</Link>{topics.map(t => <Link key={t.slug} to={`/${t.slug}`} className="block rounded-lg p-3 text-sm hover:bg-secondary">{t.title}</Link>)}<Button asChild className="mt-3 w-full rounded-lg"><Link to="/test">Testează-ți cunoștințele</Link></Button></nav>}
     </header>
