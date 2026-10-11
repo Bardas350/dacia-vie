@@ -37,17 +37,17 @@ test("Finalizează testul cu o întrebare despre fiecare dintre cele zece teme",
   await page.goto("/test");
   await page.getByRole("button", { name: "Începe testul", exact: true }).click();
   const answers = [
-      "Lumea tracică",
-      "Sarmizegetusa Regia",
-      "O agrafă metalică pentru haine",
-      "Credința în nemurire",
-      "Sarmizegetusa Regia",
-      "Sacrificiul soției",
-      "101–102 d.Hr.",
-      "Porumbul",
-      "Stratul latin",
-      "Vase ceramice, fibule și brățări din aur și argint",
-    ];
+    "Lumea tracică",
+    "Sarmizegetusa Regia",
+    "O agrafă metalică pentru haine",
+    "Credința în nemurire",
+    "Secolul V î.Hr.",
+    "Sarmizegetusa Regia",
+    "101–102 d.Hr.",
+    "Semințe carbonizate, resturi de animale, vase ceramice și unelte",
+    "Stratul latin",
+    "Vase ceramice, fibule și brățări din aur și argint",
+  ];
   for (let i = 0; i < answers.length; i++) {
     await expect(page.getByText(`Întrebarea ${i + 1} din 10`, { exact: true })).toBeVisible();
     if (i === 9) {
